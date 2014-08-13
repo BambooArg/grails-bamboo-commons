@@ -28,6 +28,7 @@
 
 # "temporary" build files
 /target
+/classes
 
 #IDE
 .project
