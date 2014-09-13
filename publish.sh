@@ -1,6 +1,7 @@
 #!/bin/bash
 
-grails maven-install
+echo "instalando bamboo commons"
+grails clean && grails refresh-dependencies && grails maven-install
 
 #grails publish-plugin 
 
