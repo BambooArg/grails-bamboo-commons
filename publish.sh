@@ -2,5 +2,5 @@
 
 grails maven-install
 
-grails publish-plugin 
+#grails publish-plugin 
 
