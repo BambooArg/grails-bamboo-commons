@@ -2,5 +2,5 @@
 
 grails maven-install
 
-grails publish-plugin --protocol=webdav
+grails publish-plugin 
 
