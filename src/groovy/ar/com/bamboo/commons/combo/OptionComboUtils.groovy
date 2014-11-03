@@ -34,10 +34,14 @@ class OptionComboUtils {
     }
 
     public static List<OptionCombo> getComboYear(){
-        List<OptionCombo> optionComboList = new ArrayList<OptionCombo>(3)
         DateTime time = new DateTime();
         int currentYear = time.getYear()
-        for (int i = currentYear; i >= (currentYear - 2); i--) {
+       return getComboYear(currentYear)
+    }
+
+    public static List<OptionCombo> getComboYear(int yearFrom){
+        List<OptionCombo> optionComboList = new ArrayList<OptionCombo>(3)
+        for (int i = yearFrom; i >= (yearFrom - 2); i--) {
             optionComboList.add(new OptionCombo(value: String.valueOf(i), label: String.valueOf(i)))
         }
         return optionComboList

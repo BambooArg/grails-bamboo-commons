@@ -51,4 +51,18 @@ class OptionComboUtilsSpec extends Specification {
         optionComboList[0].value == String.valueOf(currentYear)
         optionComboList[0].label == String.valueOf(currentYear)
     }
+
+    void "test getComboYear with parameter From"() {
+        given:
+        int yearFrom = 2012
+
+        when: "Llamo al método que pide los años"
+        List<OptionCombo> optionComboList = OptionComboUtils.getComboYear(yearFrom)
+
+        then: "Se genera un combo con el año actual + dos años anteriores"
+        optionComboList
+        optionComboList.size() == 3
+        optionComboList[0].value == String.valueOf(yearFrom)
+        optionComboList[0].label == String.valueOf(yearFrom)
+    }
 }
