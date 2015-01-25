@@ -33,9 +33,34 @@ class HourUtilsSpec extends Specification {
     }
 
     void "test intHourToString method with thrown exception"() {
-
         when: "Se le pasa al método un número de más de 4 dígitos"
         HourUtils.intHourToString(12122)
+        then: "Se arroja la exceptión IllegalArgumentExcepcion"
+        thrown(IllegalArgumentException)
+    }
+
+    @Unroll("the int hour '#hour' is transform en '#hourMinute'")
+    void "test getHourAndMinute"() {
+        expect:
+        HourUtils.getHourAndMinute(hour) == hourMinute
+
+        where:
+        hour || hourMinute
+        100 | new HourUtils.HourMinute(hour: 1, minute: 0)
+        2400 | new HourUtils.HourMinute(hour: 24, minute: 0)
+        130 | new HourUtils.HourMinute(hour: 1, minute: 30)
+        10 | new HourUtils.HourMinute(hour: 0, minute: 10)
+        921 | new HourUtils.HourMinute(hour: 9, minute: 21)
+    }
+
+    void "test getHourAndMinute method with thrown exception"() {
+        when: "Se le pasa al método un número de más de 4 dígitos"
+        HourUtils.getHourAndMinute(12122)
+        then: "Se arroja la exceptión IllegalArgumentExcepcion"
+        thrown(IllegalArgumentException)
+
+        when: "Se le pasa al método un número menor a 0"
+        HourUtils.getHourAndMinute(-4)
         then: "Se arroja la exceptión IllegalArgumentExcepcion"
         thrown(IllegalArgumentException)
     }
