@@ -51,6 +51,10 @@ class HourUtils {
         return new HourMinute(hour: hourIsolated, minute: minuteIsolated)
     }
 
+    public static Integer convertHourToJodaTimeHour(Integer hour){
+        return hour == 2400 ? 2359 : hour
+    }
+
     public static class HourMinute{
         Integer hour
         Integer minute
