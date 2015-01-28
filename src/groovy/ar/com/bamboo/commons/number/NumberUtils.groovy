@@ -1,5 +1,4 @@
 package ar.com.bamboo.commons.number
-
 /**
  * Created by orko on 29/09/14.
  */
