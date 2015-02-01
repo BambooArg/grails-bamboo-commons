@@ -3,6 +3,7 @@ package ar.com.bamboo.commons.datime
 import groovy.transform.CompileStatic
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
+import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.DateTimeFormatter
 
@@ -74,5 +75,17 @@ class DateTimeUtils {
     public static String convertDateTimeToArgentinaDate(Date date){
         DateTime dateTime = new DateTime(date.getTime())
         return dateTime.toString(dateTimeFormatterArgentino)
+    }
+
+    public static boolean isGreaterThanToday(Date dateToCompare){
+        Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
+        Date today = LocalDate.now().toDate()
+        return dateToCompareMachineTimeZone.after(today)
+    }
+
+    public static boolean isGreaterOrEqualThanToday(Date dateToCompare){
+        Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
+        Date today = LocalDate.now().toDate()
+        return dateToCompareMachineTimeZone.compareTo(today) >= 0
     }
 }
