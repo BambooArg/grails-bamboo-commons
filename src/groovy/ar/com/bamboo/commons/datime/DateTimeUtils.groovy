@@ -13,8 +13,8 @@ import org.joda.time.format.DateTimeFormatter
 @CompileStatic
 class DateTimeUtils {
 
-    public static final DateTimeFormatter dateTimeFormatterArgentino = DateTimeFormat.forPattern("dd/MM/yyy")
-    public static final DateTimeFormatter dateTimeFormatterWithhour = DateTimeFormat.forPattern("dd/MM/yyy HH:mm")
+    public static final DateTimeFormatter dateTimeFormatterArgentino = DateTimeFormat.forPattern("dd-MM-yyy")
+    public static final DateTimeFormatter dateTimeFormatterWithhour = DateTimeFormat.forPattern("dd-MM-yyy HH:mm")
     public static final DateTimeFormatter dateTimeFormatterWithhourISO8601 = DateTimeFormat.forPattern("yyy-MM-dd HH:mm")
     public static final DateTimeFormatter dateTimeFormatterISO8601 = DateTimeFormat.forPattern("yyy-MM-dd")
 
@@ -70,6 +70,10 @@ class DateTimeUtils {
 
     public static String convertDateTimeToArgentinaDate(DateTime time){
         return time.toString(dateTimeFormatterArgentino)
+    }
+
+    public static String convertDateTimeToArgentinaDate(LocalDate date){
+        return date.toString(dateTimeFormatterArgentino)
     }
 
     public static String convertDateTimeToArgentinaDate(Date date){
