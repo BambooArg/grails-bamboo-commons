@@ -81,6 +81,12 @@ class DateTimeUtils {
         return dateTime.toString(dateTimeFormatterArgentino)
     }
 
+    public static boolean isGreaterNow(Date dateWithTimeToCompare){
+        Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateWithTimeToCompare)
+        Date today = DateTime.now().toDate()
+        return dateToCompareMachineTimeZone.after(today)
+    }
+
     public static boolean isGreaterThanToday(Date dateToCompare){
         Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
         Date today = LocalDate.now().toDate()

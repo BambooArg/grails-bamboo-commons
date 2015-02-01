@@ -2,6 +2,7 @@ package ar.com.bamboo.commons.datime
 
 import grails.test.mixin.TestMixin
 import grails.test.mixin.support.GrailsUnitTestMixin
+import org.joda.time.DateTime
 import org.joda.time.LocalDate
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -40,5 +41,18 @@ class DateTimeUtilsSpec extends Specification {
         new LocalDate(2014, 12, 31).toDate() || false
         new LocalDate(2015, 12, 31).toDate() || true
         LocalDate.now().toDate() || true
+    }
+
+    @Unroll("The date #dateCompare isGreaterNow? #result")
+    void "test isGreaterNow"() {
+        expect:
+        DateTimeUtils.isGreaterNow(dateCompare) == result
+
+        where:
+        dateCompare || result
+        new DateTime(2014, 12, 31, 12, 59).toDate() || false
+        new DateTime(2015, 12, 31, 12, 59).toDate() || true
+        DateTime.now().toDate() || false
+        DateTime.now().plusSeconds(200).toDate() || true
     }
 }
