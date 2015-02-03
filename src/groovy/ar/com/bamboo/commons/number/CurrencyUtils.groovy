@@ -11,7 +11,7 @@ import java.text.NumberFormat
 @CompileStatic
 class CurrencyUtils {
 
-    private static final String CURRENCY_PATTERN = "\$###,###.00"
+    private static final String CURRENCY_PATTERN = "\$###,##0.00"
     private static final Locale LOCALE_AR = new Locale("es", "AR")
 
     public static <T extends Number>  String formatArgentinianPrice(T price){

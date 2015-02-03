@@ -24,6 +24,8 @@ class CurrencyUtilsSpec extends Specification {
 
         where:
         priceWithoutFormat || priceWithFormat
+        0 || "\$0,00"
+        0.5 || "\$0,50"
         10 || "\$10,00"
         100 || "\$100,00"
         1000 || "\$1.000,00"
