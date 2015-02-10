@@ -14,16 +14,27 @@ class HourUtils {
      */
     public static String intHourToString(Integer hour){
         String sHour = hour.toString()
-        int cerosFaltantes = 4 - sHour.size()
+        return hourToHumanFormat(sHour)
+    }
+
+    /**
+     * Transforma la hora en formato HHMM en HH:MM.
+     * El formato integer está dado como en forma militar, por ejemplo, las 13:30
+     * son las 1330. El formato de salida es HH:MM
+     * @param hour
+     * @return
+     */
+    public static String hourToHumanFormat(String hour){
+        int cerosFaltantes = 4 - hour.size()
 
         if (cerosFaltantes > 0){
-            sHour = ("0" * cerosFaltantes) + sHour
+            hour = ("0" * cerosFaltantes) + hour
         }else{
             if (cerosFaltantes < 0){
                 throw new IllegalArgumentException("El tamaño de la hora es mayor al permitido. 4 dígitos")
             }
         }
-        return sHour.substring(0, 2) + ":" + sHour.substring(2, 4)
+        return hour.substring(0, 2) + ":" + hour.substring(2, 4)
     }
 
     public static HourMinute getHourAndMinute(Integer hour){

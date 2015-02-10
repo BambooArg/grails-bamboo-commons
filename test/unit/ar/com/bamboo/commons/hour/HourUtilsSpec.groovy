@@ -39,6 +39,28 @@ class HourUtilsSpec extends Specification {
         thrown(IllegalArgumentException)
     }
 
+    @Unroll("the string hour '#hour' is transform en '#shour'")
+    void "test hourToHumanFormat"() {
+        expect:
+        HourUtils.hourToHumanFormat(hour) == shour
+
+        where:
+        hour || shour
+        "0" | "00:00"
+        "2400" | "24:00"
+        "130" | "01:30"
+        "10" | "00:10"
+        "921" | "09:21"
+        "1721" | "17:21"
+    }
+
+    void "test hourToHumanFormat method with thrown exception"() {
+        when: "Se le pasa al método un número de más de 4 dígitos"
+        HourUtils.hourToHumanFormat("12122")
+        then: "Se arroja la exceptión IllegalArgumentExcepcion"
+        thrown(IllegalArgumentException)
+    }
+
     @Unroll("the int hour '#hour' is transform en '#hourMinute'")
     void "test getHourAndMinute"() {
         expect:
@@ -63,5 +85,15 @@ class HourUtilsSpec extends Specification {
         HourUtils.getHourAndMinute(-4)
         then: "Se arroja la exceptión IllegalArgumentExcepcion"
         thrown(IllegalArgumentException)
+    }
+
+    void "test convertHourToJodaTimeHour"() {
+        expect:
+        HourUtils.convertHourToJodaTimeHour(hour) == hourMinute
+
+        where:
+        hour || hourMinute
+        2400 | 2359
+        2334 | 2334
     }
 }
