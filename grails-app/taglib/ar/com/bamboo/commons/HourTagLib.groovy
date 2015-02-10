@@ -15,6 +15,9 @@ class HourTagLib {
      * @attr hour es requerido
      * */
     def humanFormat = {attrs ->
+        if (!attrs.hour){
+            throw new IllegalArgumentException("El atributo hour es obligatorio")
+        }
         assert attrs.hour
         out << HourUtils.hourToHumanFormat(attrs.hour)
     }

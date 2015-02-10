@@ -19,4 +19,11 @@ class HourTagLibSpec extends Specification {
         expect:
         tagLib.humanFormat(hour: "1300") == "13:00"
     }
+
+    void "test humanFormat method when not argument hour is passed"() {
+        when: "No se le pasa el argument hour"
+        tagLib.humanFormat()
+        then: "IllegalArgumentException es arrojada"
+        thrown(IllegalArgumentException)
+    }
 }
