@@ -5,6 +5,7 @@ import ar.com.bamboo.commons.number.CurrencyUtils
 class CurrencyTagLib {
     static defaultEncodeAs = [taglib:'html']
     //static encodeAsForTags = [tagName: [taglib:'html'], otherTagName: [taglib:'none']]
+    static namespace = "bambooCurrency"
 
     /**
      * Imprime la hora en formato humano.
