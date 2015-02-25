@@ -55,4 +55,18 @@ class DateTimeUtilsSpec extends Specification {
         DateTime.now().toDate() || false
         DateTime.now().plusSeconds(200).toDate() || true
     }
+
+    @Unroll("The date #dateEvaluate isInPeriodWithoutHour(#fromDate, #toDate)? #result")
+    void "test isInPeriod"() {
+        expect:
+        DateTimeUtils.isInPeriodWithoutHour(dateEvaluate, fromDate, toDate) == result
+
+        where:
+        dateEvaluate | fromDate| toDate || result
+        new LocalDate(2014, 12, 15).toDate() | new LocalDate(2014, 12, 01).toDate() | new LocalDate(2014, 12, 31).toDate() || true
+        new LocalDate(2014, 12, 01).toDate() | new LocalDate(2014, 12, 01).toDate() | new LocalDate(2014, 12, 31).toDate() || true
+        new LocalDate(2014, 12, 31).toDate() | new LocalDate(2014, 12, 01).toDate() | new LocalDate(2014, 12, 31).toDate() || true
+        new LocalDate(2014, 12, 14).toDate() | new LocalDate(2014, 12, 15).toDate() | new LocalDate(2014, 12, 31).toDate() || false
+        new LocalDate(2014, 12, 29).toDate() | new LocalDate(2014, 12, 15).toDate() | new LocalDate(2014, 12, 28).toDate() || false
+    }
 }

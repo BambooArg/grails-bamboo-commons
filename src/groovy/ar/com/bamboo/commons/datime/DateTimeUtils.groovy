@@ -34,6 +34,10 @@ class DateTimeUtils {
         return DateTime.now(DateTimeUtils.currentTimeZone)
     }
 
+    public static LocalDate getCurrentUserLocalDate(){
+        return LocalDate.now(DateTimeUtils.currentTimeZone)
+    }
+
     /**
      * Convierte el date tomado de la máquina al datetime del usuario con el time zone buenos aires
      * @param dateMachine
@@ -97,5 +101,28 @@ class DateTimeUtils {
         Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
         Date today = LocalDate.now().toDate()
         return dateToCompareMachineTimeZone.compareTo(today) >= 0
+    }
+
+    public static boolean isLowerThanToday(Date dateToCompare){
+        Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
+        Date today = LocalDate.now().toDate()
+        return dateToCompareMachineTimeZone.before(today)
+    }
+
+    public static boolean isLowerOrEqualThanToday(Date dateToCompare){
+        Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
+        Date today = LocalDate.now().toDate()
+        return dateToCompareMachineTimeZone.compareTo(today) <= 0
+    }
+
+    public static boolean isInPeriodWithoutHour(Date dateEvaluate, Date fromDate, Date toDate){
+        boolean isGreaterOrEquals = dateEvaluate.compareTo(fromDate) >= 0
+        boolean isLowerOrEquals = dateEvaluate.compareTo(toDate) <= 0
+        return isGreaterOrEquals && isLowerOrEquals
+    }
+
+    public static boolean todayIsInPeriodWithoutHour(Date fromDate, Date toDate){
+        Date today = getCurrentUserLocalDate().toDate()
+        return isInPeriodWithoutHour(today, fromDate, toDate)
     }
 }
