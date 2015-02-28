@@ -14,7 +14,7 @@ import org.joda.time.format.DateTimeFormatter
 class DateTimeUtils {
 
     public static final DateTimeFormatter dateTimeFormatterArgentino = DateTimeFormat.forPattern("dd-MM-yyy")
-    public static final DateTimeFormatter dateTimeFormatterWithhour = DateTimeFormat.forPattern("dd-MM-yyy HH:mm")
+    public static final DateTimeFormatter dateTimeFormatterArgentinoWithhour = DateTimeFormat.forPattern("dd-MM-yyy HH:mm")
     public static final DateTimeFormatter dateTimeFormatterWithhourISO8601 = DateTimeFormat.forPattern("yyy-MM-dd HH:mm")
     public static final DateTimeFormatter dateTimeFormatterISO8601 = DateTimeFormat.forPattern("yyy-MM-dd")
 
@@ -64,8 +64,16 @@ class DateTimeUtils {
         return dateTimeFormatterArgentino.parseDateTime(date).toDate();
     }
 
-    public static String convertDateTimeToISO8601(DateTime time){
+    public static String convertDateTimeToISO8601WithHour(DateTime time){
         return time.toString(dateTimeFormatterWithhourISO8601)
+    }
+
+    public static String convertDateTimeToISO8601(DateTime time){
+        return time.toString(dateTimeFormatterISO8601)
+    }
+
+    public static Date converStringISO8601WithHourToDate(String date){
+        return dateTimeFormatterWithhourISO8601.parseDateTime(date).toDate();
     }
 
     public static Date converStringISO8601ToDate(String date){
