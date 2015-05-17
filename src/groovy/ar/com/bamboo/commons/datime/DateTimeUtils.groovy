@@ -95,13 +95,13 @@ class DateTimeUtils {
 
     public static boolean isGreaterNow(Date dateWithTimeToCompare){
         Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateWithTimeToCompare)
-        Date today = DateTime.now().toDate()
+        Date today = convertDateUserToDateMachine(DateTime.now().toDate())
         return dateToCompareMachineTimeZone.after(today)
     }
 
     public static boolean isGreaterThanToday(Date dateToCompare){
         Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
-        Date today = LocalDate.now().toDate()
+        Date today = convertDateUserToDateMachine(LocalDate.now().toDate())
         return dateToCompareMachineTimeZone.after(today)
     }
 
