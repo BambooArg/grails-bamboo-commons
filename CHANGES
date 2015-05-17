@@ -1,3 +1,44 @@
+Version 1.0.0:
+ - Corrijo un test en la comparación de fechas que fallaba en el server de test de travis porque no estaba tomando bien los usos horarios
+ - Modificaciones al README.md y mejoras en el BuildConfig.groovy
+ - cambio la versión de grails. Configuro el repositorio de maven en nexus
+ - Modifico el script de publish del proyecto
+ - Agrego métodos para formatear las fechas
+ - Agrego comparaciones de fechas por periodo y por menor. Con sus casos de test
+ - Agrego namespace al taglib de currency
+ - Agrego taglib para manejar el formato de moneda
+ - Modifico el taglib para que si no se le pasa ningún argumento, arroje la exception ILLegalArgument. Se ahce el caso de test pertinente
+ - Agrego método en el Utils de Horas para imprimir alegremente un string hhmm en hh:mm. Agrego el taglib para manejar exactamente lo mismo pero desde las gsp. Todo con sus casos de test correspondientes
+ - Se corrige un error en el formato del precio cuando el importe es menor a 1. Ticket https://trello.com/c/gA55eHEd
+ - Agrego metodo que compara una fecha con horas con now()
+ - Cambio el formato de fecha de dd/MM/YYYY a dd-mm-yyyy
+ - Agrego método a DateTimeUtils para manejar comparaciones de fechas
+ - Agrego DateTimeUtils y CurrencyUtils
+ - Agrego un método para manejar las horas de datetime jodatime
+ - Agrego método a HourUtils que me devuelve las horas y los minutos separados de un integer
+ - Se agregan método a la clase combo utils para solucionar un problema en el proyecto de bighamlet con los combos de años y los años actuales
+ - Subo una nueva clase exception para manejar los errores de business
+ - Actualizando grails a version 2.4.4
+ - Agrego método para generar combo de años a partir de un año en particular
+ - Agrego clase para manejar las horas
+ - Agrego la clase NumberUtils con métodos que valida rectas e intersecciones
+ - Agrego la clase BambooFile
+ - Cambio en la forma de publicar para que publique en el repo local de maven
+ - Cambios en la publicación del plugin
+ - CAmbio en el publish.sh
+ - cambio de repositorio default de maven para install y deploy
+ - Agrego archivo script para publicar
+ - Agrego métodos para manejar las fechas en los combos
+ - Agrego Clase utils para manejar la creación de ciertos combos de objetos que no son dominio
+ - Cambio el nombre de combo a OptionCombo
+ - Agrego clase combo
+ - Agregado de validacion de cuit
+ - Agrego la clase condición de IVA
+ - delete de clases que se habían puesto mal en este plugin
+ - Configuración version snapshot
+ - Merge branch 'feature-person' into developer
+ - Finalización de card https://trello.com/c/njCfyCjm
+
 Version 0.1.0
  - init plugin
  - Initial commit
