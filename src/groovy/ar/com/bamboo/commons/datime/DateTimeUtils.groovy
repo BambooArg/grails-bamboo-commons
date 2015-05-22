@@ -48,6 +48,16 @@ class DateTimeUtils {
     }
 
     /**
+     * Convierte el date tomado de la máquina al datetime del usuario con el time zone buenos aires.
+     * Devuelve el date sin horas
+     * @param dateMachine
+     * @return
+     */
+    public static Date convertDateMachineToDateUserWithoutHour(Date dateMachine){
+        return new LocalDate(dateMachine, DateTimeUtils.currentTimeZone).toDate()
+    }
+
+    /**
      * Convierte la fecha ingresada por el usuario, en timezone de maquina (pero con time zone de usuario)
      * al time zone de la máquina con la diferencia de usuario
      * FALTA PROBARLO BIEN PORQUE NO TENIA CASOS EN DONDE EL USUARIO INGRESA UNA FECHA Y HAY QUE BUSCARLA
@@ -58,19 +68,6 @@ class DateTimeUtils {
         DateTimeZone currentZone = DateTimeZone.default
         long newMilis = currentZone.getMillisKeepLocal(DateTimeUtils.currentTimeZone, dateUser.time)
         return new Date(newMilis)
-    }
-
-    /**
-     * Convierte la fecha ingresada por el usuario, en timezone de maquina (pero con time zone de usuario)
-     * al time zone de la máquina con la diferencia de usuario
-     * FALTA PROBARLO BIEN PORQUE NO TENIA CASOS EN DONDE EL USUARIO INGRESA UNA FECHA Y HAY QUE BUSCARLA
-     * @param dateUser
-     * @return
-     */
-    public static Date convertDateUserToDateMachineWithoutHour(Date dateUser){
-        DateTimeZone currentZone = DateTimeZone.default
-        long newMilis = currentZone.getMillisKeepLocal(DateTimeUtils.currentTimeZone, dateUser.time)
-        return new LocalDate(newMilis).toDate()
     }
 
     public static Date convertStringDDMMAAAToDate(String date){
@@ -142,10 +139,16 @@ class DateTimeUtils {
         return isGreaterOrEquals && isLowerOrEquals
     }
 
+    /**
+     *
+     * @param fromDate
+     * @param toDate
+     * @return
+     */
     public static boolean todayIsInPeriodWithoutHour(Date fromDate, Date toDate){
         Date today = getCurrentUserLocalDate().toDate()
-        fromDate = convertDateUserToDateMachineWithoutHour(fromDate)
-        toDate = convertDateUserToDateMachineWithoutHour(toDate)
+        fromDate = convertDateMachineToDateUserWithoutHour(fromDate)
+        toDate = convertDateMachineToDateUserWithoutHour(toDate)
         return isInPeriodWithoutHour(today, fromDate, toDate)
     }
 }
