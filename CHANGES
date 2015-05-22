@@ -1,3 +1,9 @@
+Version 1.0.1:
+ - Merge branch 'developer' into release-1.0.1
+ - Arreglo un método de fechas que estaba andando mal con los usos horarios
+ - Merge branch 'release-1.0' into developer
+ - Cambio la version del plugin
+
 Version 1.0.0:
  - Corrijo un test en la comparación de fechas que fallaba en el server de test de travis porque no estaba tomando bien los usos horarios
  - Modificaciones al README.md y mejoras en el BuildConfig.groovy
