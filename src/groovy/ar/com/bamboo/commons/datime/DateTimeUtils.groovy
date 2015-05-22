@@ -60,6 +60,19 @@ class DateTimeUtils {
         return new Date(newMilis)
     }
 
+    /**
+     * Convierte la fecha ingresada por el usuario, en timezone de maquina (pero con time zone de usuario)
+     * al time zone de la máquina con la diferencia de usuario
+     * FALTA PROBARLO BIEN PORQUE NO TENIA CASOS EN DONDE EL USUARIO INGRESA UNA FECHA Y HAY QUE BUSCARLA
+     * @param dateUser
+     * @return
+     */
+    public static Date convertDateUserToDateMachineWithoutHour(Date dateUser){
+        DateTimeZone currentZone = DateTimeZone.default
+        long newMilis = currentZone.getMillisKeepLocal(DateTimeUtils.currentTimeZone, dateUser.time)
+        return new LocalDate(newMilis).toDate()
+    }
+
     public static Date convertStringDDMMAAAToDate(String date){
         return dateTimeFormatterArgentino.parseDateTime(date).toDate();
     }
@@ -131,6 +144,8 @@ class DateTimeUtils {
 
     public static boolean todayIsInPeriodWithoutHour(Date fromDate, Date toDate){
         Date today = getCurrentUserLocalDate().toDate()
+        fromDate = convertDateUserToDateMachineWithoutHour(fromDate)
+        toDate = convertDateUserToDateMachineWithoutHour(toDate)
         return isInPeriodWithoutHour(today, fromDate, toDate)
     }
 }
