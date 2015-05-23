@@ -124,7 +124,7 @@ class DateTimeUtils {
      * @return
      */
     public static boolean isGreaterThanToday(DateTime dateTimeToCompare){
-        Date dateToCompare = dateTimeToCompare.withZone(currentTimeZone).toLocalDate().toDate()
+        Date dateToCompare = dateTimeToCompare.toLocalDate().toDate()
         Date today = currentUserLocalDate.toDate()
         return dateToCompare.after(today)
     }
@@ -136,7 +136,7 @@ class DateTimeUtils {
      * @return
      */
     public static boolean isGreaterOrEqualThanToday(DateTime dateTimeToCompare){
-        Date dateToCompare = dateTimeToCompare.withZone(currentTimeZone).toLocalDate().toDate()
+        Date dateToCompare = dateTimeToCompare.toLocalDate().toDate()
         Date today = currentUserLocalDate.toDate()
         return dateToCompare.compareTo(today) >= 0
     }
