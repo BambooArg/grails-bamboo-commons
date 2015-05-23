@@ -1,3 +1,7 @@
+Version 1.0.3:
+ - Cambio la version del plugin en el archivo de configuración. Aún no me termino de acostumbrar :))
+ - Merge branch 'release-1.0.2'
+
 Version 1.0.2:
  - Corrijo método DateTimeUtils.todayIsInPeriodWithoutHour ya al no tener test suficientes no había detectado un error en el timezone. En un CI rompía y no podía detectar bien desde donde venía. Estaba normalizando las fechas en otro time zone
  - Merge branch 'master' into developer
