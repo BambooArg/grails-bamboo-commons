@@ -1,3 +1,12 @@
+Version 1.0.6:
+ - Merge branch 'master' of https://github.com/orkonano/grails-bamboo-commons
+ - Cambio la versión a 1.0.6
+ - Merge pull request #6 from orkonano/hot-fix-1.0.5
+ - Arreglo el método isGreaterOrEqualThanToday que no estaba andando bien con el tz
+ - Merge pull request #5 from orkonano/developer
+ - Merge branch 'master' into developer
+ - Merge pull request #4 from orkonano/hot-fix-1.0.4
+
 Version 1.0.5:
  - Cambio la versión del plugin a 1.0.5
  - Merge pull request #3 from orkonano/hot-fix-1.0.4
