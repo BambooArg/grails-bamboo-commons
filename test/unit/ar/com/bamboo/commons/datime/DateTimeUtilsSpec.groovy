@@ -92,16 +92,22 @@ class DateTimeUtilsSpec extends Specification {
     @Unroll("Evaluate if todayIsInPeriodWithoutHour(#fromDate, #toDate)? #result")
     void "test todayIsInPeriodWithoutHour"() {
         expect:
+
         DateTimeUtils.todayIsInPeriodWithoutHour(fromDate, toDate) == result
 
         where:
         fromDate| toDate || result
-        DateTime.now() | DateTime.now().plusDays(10) || true
-        DateTime.now().minusDays(10) | DateTime.now() || true
-        DateTime.now().minusDays(10) | DateTime.now().plusDays(10) || true
-        DateTime.now().plusDays(1) | DateTime.now().plusDays(10)|| false
-        DateTime.now().minusDays(10) | DateTime.now().minusDays(1) || false
-        DateTime.now() | DateTime.now().plusDays(1) || true
-        DateTime.now().minusDays(1) | DateTime.now() || true
+        currentLocalDate() | currentLocalDate().plusDays(10) || true
+        currentLocalDate().minusDays(10) | currentLocalDate() || true
+        currentLocalDate().minusDays(10) | currentLocalDate().plusDays(10) || true
+        currentLocalDate().plusDays(1) | currentLocalDate().plusDays(10) || false
+        currentLocalDate().minusDays(10) | currentLocalDate().minusDays(1) || false
+        currentLocalDate() | currentLocalDate().plusDays(1) || true
+        currentLocalDate().minusDays(1) | currentLocalDate() || true
+    }
+
+    private LocalDate currentLocalDate(){
+        DateTime currentUserTime = DateTimeUtils.currentUserTime
+        new LocalDate(currentUserTime.year, currentUserTime.monthOfYear, currentUserTime.dayOfMonth)
     }
 }
