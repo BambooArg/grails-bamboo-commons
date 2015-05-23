@@ -10,7 +10,6 @@ import org.joda.time.format.DateTimeFormatter
 /**
  * Created by orko on 28/01/15.
  */
-@CompileStatic
 class DateTimeUtils {
 
     public static final DateTimeFormatter dateTimeFormatterArgentino = DateTimeFormat.forPattern("dd-MM-yyy")
@@ -107,37 +106,60 @@ class DateTimeUtils {
         return dateTime.toString(dateTimeFormatterArgentino)
     }
 
-    public static boolean isGreaterNow(Date dateWithTimeToCompare){
-        Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateWithTimeToCompare)
-        Date today = convertDateUserToDateMachine(DateTime.now().toDate())
-        return dateToCompareMachineTimeZone.after(today)
+    /**
+     * Compara si la fecha dateTimeToCompare es mayor a now.
+     * Se normalizan las fechas en el timezone de Bs As
+     * @param dateWithTimeToCompare
+     * @return
+     */
+    public static boolean isGreaterNow(DateTime dateTimeToCompare){
+        Date dateToCompare = dateTimeToCompare.withZone(currentTimeZone).toDate()
+        Date today = currentUserTime.toDate()
+        return dateToCompare.after(today)
     }
 
-    public static boolean isGreaterThanToday(Date dateToCompare){
-        Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
-        Date today = convertDateUserToDateMachine(LocalDate.now().toDate())
-        return dateToCompareMachineTimeZone.after(today)
+    /**
+     * Compara si la fecha dateTimeToCompare es mayor a today.
+     * Se normalizan las fechas en el timezone de Bs As
+     * @param dateTimeToCompare
+     * @return
+     */
+    public static boolean isGreaterThanToday(DateTime dateTimeToCompare){
+        Date dateToCompare = dateTimeToCompare.withZone(currentTimeZone).toLocalDate().toDate()
+        Date today = currentUserLocalDate.toDate()
+        return dateToCompare.after(today)
     }
 
-    public static boolean isGreaterOrEqualThanToday(Date dateToCompare){
-        Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
-        Date today = LocalDate.now().toDate()
-        return dateToCompareMachineTimeZone.compareTo(today) >= 0
+    /**
+     * Compara si la fecha dateTimeToCompare es mayor o igual a today.
+     * Se normalizan las fechas en el timezone de Bs As
+     * @param dateTimeToCompare
+     * @return
+     */
+    public static boolean isGreaterOrEqualThanToday(DateTime dateTimeToCompare){
+        Date dateToCompare = dateTimeToCompare.withZone(currentTimeZone).toLocalDate().toDate()
+        Date today = currentUserLocalDate.toDate()
+        return dateToCompare.compareTo(today) >= 0
     }
 
     public static boolean isLowerThanToday(Date dateToCompare){
-        Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
-        Date today = LocalDate.now().toDate()
-        return dateToCompareMachineTimeZone.before(today)
+        Date today = currentUserLocalDate.toDate()
+        return dateToCompare.before(today)
     }
 
     public static boolean isLowerOrEqualThanToday(Date dateToCompare){
-        Date dateToCompareMachineTimeZone = convertDateUserToDateMachine(dateToCompare)
-        Date today = LocalDate.now().toDate()
-        return dateToCompareMachineTimeZone.compareTo(today) <= 0
+        Date today = currentUserLocalDate.toDate()
+        return dateToCompare.compareTo(today) <= 0
     }
 
-    public static boolean isInPeriodWithoutHour(Date dateEvaluate, Date fromDate, Date toDate){
+    /**
+     * Comprueba si la fecha dateEvaluate está comprendida en el período fromDate a toDate
+     * @param dateEvaluate
+     * @param fromDate
+     * @param toDate
+     * @return
+     */
+    public static boolean isInPeriodWithoutHour(dateEvaluate, fromDate, toDate){
         boolean isGreaterOrEquals = dateEvaluate.compareTo(fromDate) >= 0
         boolean isLowerOrEquals = dateEvaluate.compareTo(toDate) <= 0
         return isGreaterOrEquals && isLowerOrEquals
@@ -145,13 +167,15 @@ class DateTimeUtils {
 
     /**
      * Controla si la fecha hoy está comprendida en el período fromDate to toDate
-     * La fecha de hoy está configurado en el timezone del service
-     * @param fromDate
-     * @param toDate
+     * Normaliza todas las fechas a time zone Bs As
+     * @param fromDateTime
+     * @param toDateTime
      * @return
      */
-    public static boolean todayIsInPeriodWithoutHour(LocalDate fromDate, LocalDate toDate){
-        Date today = LocalDate.now().toDate()
-        return isInPeriodWithoutHour(today, fromDate.toDate(), toDate.toDate())
+    public static boolean todayIsInPeriodWithoutHour(DateTime fromDateTime, DateTime toDateTime){
+        LocalDate fromDate = fromDateTime.withZone(currentTimeZone).toLocalDate()
+        LocalDate toDate = toDateTime.withZone(currentTimeZone).toLocalDate()
+        LocalDate today = currentUserLocalDate
+        return isInPeriodWithoutHour(today, fromDate, toDate)
     }
 }
