@@ -1,6 +1,5 @@
 package ar.com.bamboo.commons.datime
 
-import groovy.transform.CompileStatic
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
@@ -167,15 +166,13 @@ class DateTimeUtils {
 
     /**
      * Controla si la fecha hoy está comprendida en el período fromDate to toDate
-     * Normaliza todas las fechas a time zone Bs As
-     * @param fromDateTime
-     * @param toDateTime
+     * Compara con la fecha de today con TimeZone de Bs As
+     * @param fromLocalDate
+     * @param toLocalDate
      * @return
      */
-    public static boolean todayIsInPeriodWithoutHour(DateTime fromDateTime, DateTime toDateTime){
-        LocalDate fromDate = fromDateTime.withZone(currentTimeZone).toLocalDate()
-        LocalDate toDate = toDateTime.withZone(currentTimeZone).toLocalDate()
+    public static boolean todayIsInPeriodWithoutHour(LocalDate fromLocalDate, LocalDate toLocalDate){
         LocalDate today = currentUserLocalDate
-        return isInPeriodWithoutHour(today, fromDate, toDate)
+        return isInPeriodWithoutHour(today, fromLocalDate, toLocalDate)
     }
 }
