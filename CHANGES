@@ -1,3 +1,11 @@
+Version 1.0.4:
+ - Agrego integración de travis con slack
+ - Merge branch 'master' of https://github.com/orkonano/grails-bamboo-commons
+ - Merge branch 'hot-fix-1.0.2'
+ - Agrego logo de Travis con status del build
+ - Cambio la versión del plugin. Aún no entiendo como funciona el bump_version con el agregado de archivos modificados :(
+ - Cambio el método que controla si la fecha de hoy está comprendida en el período pasado por parámetro.Se toma siempre la fecha de hoy como la current de la máquina
+
 Version 1.0.3:
  - Cambio la version del plugin en el archivo de configuración. Aún no me termino de acostumbrar :))
  - Merge branch 'release-1.0.2'

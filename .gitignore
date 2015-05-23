@@ -39,3 +39,4 @@
 #zip
 *.zip.*
 
+cobertura.ser
