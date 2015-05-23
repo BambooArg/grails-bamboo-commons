@@ -1,3 +1,10 @@
+Version 1.0.5:
+ - Cambio la versión del plugin a 1.0.5
+ - Merge pull request #3 from orkonano/hot-fix-1.0.4
+ - Modifico unos casos de test ya que generaban falsos positivos. Mejoro el método que comprueba si un período contiene la fecha de hoy con time zone de Bs As
+ - Merge branch 'master' into developer
+ - Cambio la versión del plugin a 1.0.4
+
 Version 1.0.4:
  - Agrego integración de travis con slack
  - Merge branch 'master' of https://github.com/orkonano/grails-bamboo-commons
