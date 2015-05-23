@@ -1,8 +1,11 @@
 package ar.com.bamboo.commons.fiscalUtils
 
+import ar.com.bamboo.commons.datime.DateTimeUtils
 import grails.test.mixin.TestMixin
 import grails.test.mixin.support.GrailsUnitTestMixin
+import org.joda.time.DateTime
 import spock.lang.Specification
+import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
@@ -16,30 +19,20 @@ class CuitUtilsSpec extends Specification {
     def cleanup() {
     }
 
-    void "test validacion cuit"() {
-        given:
-        String cuit1Valido = "20111111112"
-        String cuit2Valido = "20222222223"
-        String cuit3Valido = "20305940128"
-        String cuit1InvalidoLenght = "234234"
-        String cuit2InvalidoVacio = ""
-        String cuit3InvalidoNull = null
-        String cuit4InvalidoMalFormado = "20555555553"
-        String cuit4InvalidoNoNumero = "sdfsfd"
+    @Unroll("Evaluate if #cuit is valid #result")
+    void "test validar"() {
+        expect:
+        CuitUtils.validar(cuit) == result
 
-        when: "Cuando se valida los cuit váidos"
-        then: "La validacion devuelve true"
-        CuitUtils.validar(cuit1Valido)
-        CuitUtils.validar(cuit2Valido)
-        CuitUtils.validar(cuit3Valido)
-
-        when: "Cuando se valida los cuit inválidos"
-        then: "La validación devuelve false"
-        !CuitUtils.validar(cuit1InvalidoLenght)
-        !CuitUtils.validar(cuit2InvalidoVacio)
-        !CuitUtils.validar(cuit3InvalidoNull)
-        !CuitUtils.validar(cuit4InvalidoMalFormado)
-        !CuitUtils.validar(cuit4InvalidoNoNumero)
-
+        where:
+        cuit || result
+        "20111111112" || true
+        "20222222223" || true
+        "20305940128" || true
+        "234234" || false
+        "" || false
+        null || false
+        "20555555553" || false
+        "234234" || false
     }
 }
