@@ -34,6 +34,10 @@ class DateTimeUtils {
         return DateTime.now(DateTimeUtils.currentTimeZone)
     }
 
+    /**
+     * Devuelve el día actual del usuario con el time zone buenos aires
+     * @return
+     */
     public static LocalDate getCurrentUserLocalDate(){
         return LocalDate.now(DateTimeUtils.currentTimeZone)
     }
@@ -140,15 +144,14 @@ class DateTimeUtils {
     }
 
     /**
-     *
+     * Controla si la fecha hoy está comprendida en el período fromDate to toDate
+     * La fecha de hoy está configurado en el timezone del service
      * @param fromDate
      * @param toDate
      * @return
      */
-    public static boolean todayIsInPeriodWithoutHour(Date fromDate, Date toDate){
-        Date today = getCurrentUserLocalDate().toDate()
-        fromDate = convertDateMachineToDateUserWithoutHour(fromDate)
-        toDate = convertDateMachineToDateUserWithoutHour(toDate)
-        return isInPeriodWithoutHour(today, fromDate, toDate)
+    public static boolean todayIsInPeriodWithoutHour(LocalDate fromDate, LocalDate toDate){
+        Date today = LocalDate.now().toDate()
+        return isInPeriodWithoutHour(today, fromDate.toDate(), toDate.toDate())
     }
 }
