@@ -5,6 +5,7 @@ import grails.test.mixin.support.GrailsUnitTestMixin
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.LocalDate
+import org.joda.time.LocalTime
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -81,37 +82,12 @@ class DateTimeUtilsSpec extends Specification {
 
         where:
         fromDate| toDate || result
-        LocalDate.now().toDate() | LocalDate.now().plusDays(10).toDate() || true
-        LocalDate.now().minusDays(10).toDate() | LocalDate.now().toDate() || true
-        LocalDate.now().minusDays(10).toDate() | LocalDate.now().plusDays(10).toDate() || true
-        LocalDate.now().plusDays(1).toDate() | LocalDate.now().plusDays(10).toDate()|| false
-        LocalDate.now().minusDays(10).toDate() | LocalDate.now().minusDays(1).toDate() || false
-        LocalDate.now().toDate() | LocalDate.now().plusDays(1).toDate() || true
-        LocalDate.now().minusDays(1).toDate() | LocalDate.now().toDate() || true
-        //TIME ZONE NEW YORK
-        LocalDate.now(DateTimeZone.forID("America/New_York")).toDate() | LocalDate.now(DateTimeZone.forID("America/New_York")).plusDays(10).toDate() || true
-        LocalDate.now(DateTimeZone.forID("America/New_York")).minusDays(10).toDate() | LocalDate.now(DateTimeZone.forID("America/New_York")).toDate() || true
-        LocalDate.now(DateTimeZone.forID("America/New_York")).minusDays(10).toDate() | LocalDate.now(DateTimeZone.forID("America/New_York")).plusDays(10).toDate() || true
-        LocalDate.now(DateTimeZone.forID("America/New_York")).plusDays(1).toDate() | LocalDate.now(DateTimeZone.forID("America/New_York")).plusDays(10).toDate()|| false
-        LocalDate.now(DateTimeZone.forID("America/New_York")).minusDays(10).toDate() | LocalDate.now(DateTimeZone.forID("America/New_York")).minusDays(1).toDate() || false
-        LocalDate.now(DateTimeZone.forID("America/New_York")).toDate() | LocalDate.now(DateTimeZone.forID("America/New_York")).plusDays(1).toDate() || true
-        LocalDate.now(DateTimeZone.forID("America/New_York")).minusDays(1).toDate() | LocalDate.now(DateTimeZone.forID("America/New_York")).toDate() || true
-        //TIME ZONE BS AS
-        LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).toDate() | LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).plusDays(10).toDate() || true
-        LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).minusDays(10).toDate() | LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).toDate() || true
-        LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).minusDays(10).toDate() | LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).plusDays(10).toDate() || true
-        LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).plusDays(1).toDate() | LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).plusDays(10).toDate()|| false
-        LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).minusDays(10).toDate() | LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).minusDays(1).toDate() || false
-        LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).toDate() | LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).plusDays(1).toDate() || true
-        LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).minusDays(1).toDate() | LocalDate.now(DateTimeZone.forID("America/Buenos_Aires")).toDate() || true
-        //TIME ZONE ROME
-        LocalDate.now(DateTimeZone.forID("Europe/Rome")).toDate() | LocalDate.now(DateTimeZone.forID("Europe/Rome")).plusDays(10).toDate() || true
-        LocalDate.now(DateTimeZone.forID("Europe/Rome")).minusDays(10).toDate() | LocalDate.now(DateTimeZone.forID("Europe/Rome")).toDate() || true
-        LocalDate.now(DateTimeZone.forID("Europe/Rome")).minusDays(10).toDate() | LocalDate.now(DateTimeZone.forID("Europe/Rome")).plusDays(10).toDate() || true
-        LocalDate.now(DateTimeZone.forID("Europe/Rome")).plusDays(1).toDate() | LocalDate.now(DateTimeZone.forID("Europe/Rome")).plusDays(10).toDate()|| false
-        LocalDate.now(DateTimeZone.forID("Europe/Rome")).minusDays(10).toDate() | LocalDate.now(DateTimeZone.forID("Europe/Rome")).minusDays(1).toDate() || false
-        LocalDate.now(DateTimeZone.forID("Europe/Rome")).toDate() | LocalDate.now(DateTimeZone.forID("Europe/Rome")).plusDays(1).toDate() || true
-        LocalDate.now(DateTimeZone.forID("Europe/Rome")).minusDays(1).toDate() | LocalDate.now(DateTimeZone.forID("Europe/Rome")).toDate() || true
-
+        LocalDate.now() | LocalDate.now().plusDays(10) || true
+        LocalDate.now().minusDays(10) | LocalDate.now() || true
+        LocalDate.now().minusDays(10) | LocalDate.now().plusDays(10) || true
+        LocalDate.now().plusDays(1) | LocalDate.now().plusDays(10)|| false
+        LocalDate.now().minusDays(10) | LocalDate.now().minusDays(1) || false
+        LocalDate.now() | LocalDate.now().plusDays(1) || true
+        LocalDate.now().minusDays(1) | LocalDate.now() || true
     }
 }
