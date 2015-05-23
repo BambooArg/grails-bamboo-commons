@@ -3,6 +3,8 @@ branches:
   only:
     - master
     - developer
+    - /^hot-fix-.*$/
+    - /^release-.*$/
 
 before_script:
  - chmod +x grailsw
