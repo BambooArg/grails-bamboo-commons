@@ -28,9 +28,9 @@ class DateTimeUtilsSpec extends Specification {
 
         where:
         dateCompare || result
-        DateTime.now().minusDays(10) || false
-        DateTime.now().plusDays(10) || true
-        DateTime.now() || false
+        DateTimeUtils.currentUserTime.minusDays(10) || false
+        DateTimeUtils.currentUserTime.plusDays(10) || true
+        DateTimeUtils.currentUserTime || false
     }
 
     @Unroll("The date #dateCompare isGreaterOrEqualsThanToday? #result")
@@ -40,9 +40,9 @@ class DateTimeUtilsSpec extends Specification {
 
         where:
         dateCompare || result
-        DateTime.now().minusDays(10) || false
-        DateTime.now().plusDays(10) || true
-        DateTime.now() || true
+        DateTimeUtils.currentUserTime.minusDays(10) || false
+        DateTimeUtils.currentUserTime.plusDays(10) || true
+        DateTimeUtils.currentUserTime || true
     }
 
     @Unroll("The date #dateCompare isGreaterNow? #result")
