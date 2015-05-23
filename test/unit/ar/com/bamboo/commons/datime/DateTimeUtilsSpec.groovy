@@ -28,9 +28,9 @@ class DateTimeUtilsSpec extends Specification {
 
         where:
         dateCompare || result
-        new LocalDate(2014, 12, 31).toDate() || false
-        new LocalDate(2015, 12, 31).toDate() || true
-        LocalDate.now().toDate() || false
+        DateTime.now().minusDays(10) || false
+        DateTime.now().plusDays(10) || true
+        DateTime.now() || false
     }
 
     @Unroll("The date #dateCompare isGreaterOrEqualsThanToday? #result")
@@ -40,9 +40,9 @@ class DateTimeUtilsSpec extends Specification {
 
         where:
         dateCompare || result
-        new LocalDate(2014, 12, 31).toDate() || false
-        new LocalDate(2015, 12, 31).toDate() || true
-        LocalDate.now().toDate() || true
+        DateTime.now().minusDays(10) || false
+        DateTime.now().plusDays(10) || true
+        DateTime.now() || true
     }
 
     @Unroll("The date #dateCompare isGreaterNow? #result")
@@ -52,10 +52,10 @@ class DateTimeUtilsSpec extends Specification {
 
         where:
         dateCompare || result
-        new DateTime(2014, 12, 31, 12, 59).toDate() || false
-        new DateTime(2015, 12, 31, 12, 59).toDate() || true
-        DateTime.now().toDate() || false
-        DateTime.now().plusSeconds(200).toDate() || true
+        DateTime.now().minusDays(10) || false
+        DateTime.now().plusDays(10) || true
+        DateTime.now() || false
+        DateTime.now().plusSeconds(200) || true
     }
 
     @Unroll("The date #dateEvaluate isInPeriodWithoutHour(#fromDate, #toDate)? #result")
@@ -65,12 +65,28 @@ class DateTimeUtilsSpec extends Specification {
 
         where:
         dateEvaluate | fromDate| toDate || result
+        //DATE
         new LocalDate(2014, 12, 15).toDate() | new LocalDate(2014, 12, 01).toDate() | new LocalDate(2014, 12, 31).toDate() || true
         new LocalDate(2014, 12, 01).toDate() | new LocalDate(2014, 12, 01).toDate() | new LocalDate(2014, 12, 31).toDate() || true
         new LocalDate(2014, 12, 31).toDate() | new LocalDate(2014, 12, 01).toDate() | new LocalDate(2014, 12, 31).toDate() || true
         new LocalDate(2014, 12, 14).toDate() | new LocalDate(2014, 12, 15).toDate() | new LocalDate(2014, 12, 31).toDate() || false
         new LocalDate(2014, 12, 29).toDate() | new LocalDate(2014, 12, 15).toDate() | new LocalDate(2014, 12, 28).toDate() || false
         new LocalDate(2014, 12, 29).toDate() | new LocalDate(2014, 12, 15).toDate() | new LocalDate(2014, 12, 28).toDate() || false
+        //LOCALDATE
+        new LocalDate(2014, 12, 15) | new LocalDate(2014, 12, 01) | new LocalDate(2014, 12, 31) || true
+        new LocalDate(2014, 12, 01) | new LocalDate(2014, 12, 01) | new LocalDate(2014, 12, 31) || true
+        new LocalDate(2014, 12, 31) | new LocalDate(2014, 12, 01) | new LocalDate(2014, 12, 31) || true
+        new LocalDate(2014, 12, 14) | new LocalDate(2014, 12, 15) | new LocalDate(2014, 12, 31) || false
+        new LocalDate(2014, 12, 29) | new LocalDate(2014, 12, 15) | new LocalDate(2014, 12, 28) || false
+        new LocalDate(2014, 12, 29) | new LocalDate(2014, 12, 15) | new LocalDate(2014, 12, 28) || false
+        //DATETIME
+        new DateTime(2014, 12, 15, 12, 00) | new DateTime(2014, 12, 01, 12, 00) | new DateTime(2014, 12, 31, 12, 00) || true
+        new DateTime(2014, 12, 01, 12, 00) | new DateTime(2014, 12, 01, 12, 00) | new DateTime(2014, 12, 31, 12, 00) || true
+        new DateTime(2014, 12, 31, 12, 00) | new DateTime(2014, 12, 01, 12, 00) | new DateTime(2014, 12, 31, 12, 00) || true
+        new DateTime(2014, 12, 14, 12, 00) | new DateTime(2014, 12, 15, 12, 00) | new DateTime(2014, 12, 31, 12, 00) || false
+        new DateTime(2014, 12, 29, 12, 00) | new DateTime(2014, 12, 15, 12, 00) | new DateTime(2014, 12, 28, 12, 00) || false
+        new DateTime(2014, 12, 29, 12, 00) | new DateTime(2014, 12, 15, 12, 00) | new DateTime(2014, 12, 28, 12, 00) || false
+
     }
 
     @Unroll("Evaluate if todayIsInPeriodWithoutHour(#fromDate, #toDate)? #result")
@@ -78,16 +94,14 @@ class DateTimeUtilsSpec extends Specification {
         expect:
         DateTimeUtils.todayIsInPeriodWithoutHour(fromDate, toDate) == result
 
-        when:
-
         where:
         fromDate| toDate || result
-        LocalDate.now() | LocalDate.now().plusDays(10) || true
-        LocalDate.now().minusDays(10) | LocalDate.now() || true
-        LocalDate.now().minusDays(10) | LocalDate.now().plusDays(10) || true
-        LocalDate.now().plusDays(1) | LocalDate.now().plusDays(10)|| false
-        LocalDate.now().minusDays(10) | LocalDate.now().minusDays(1) || false
-        LocalDate.now() | LocalDate.now().plusDays(1) || true
-        LocalDate.now().minusDays(1) | LocalDate.now() || true
+        DateTime.now() | DateTime.now().plusDays(10) || true
+        DateTime.now().minusDays(10) | DateTime.now() || true
+        DateTime.now().minusDays(10) | DateTime.now().plusDays(10) || true
+        DateTime.now().plusDays(1) | DateTime.now().plusDays(10)|| false
+        DateTime.now().minusDays(10) | DateTime.now().minusDays(1) || false
+        DateTime.now() | DateTime.now().plusDays(1) || true
+        DateTime.now().minusDays(1) | DateTime.now() || true
     }
 }
