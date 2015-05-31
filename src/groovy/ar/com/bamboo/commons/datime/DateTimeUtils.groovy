@@ -106,15 +106,18 @@ class DateTimeUtils {
     }
 
     /**
-     * Compara si la fecha dateTimeToCompare es mayor a now.
-     * Se normalizan las fechas en el timezone de Bs As
+     * Compara si la fecha dateTimeToCompare es mayor a now en timezone BsAs.
+     * No tiene en cuenta los segundos, sólo horas y minutos
      * @param dateWithTimeToCompare
      * @return
      */
     public static boolean isGreaterNow(DateTime dateTimeToCompare){
-        Date dateToCompare = dateTimeToCompare.withZone(currentTimeZone).toDate()
-        Date today = currentUserTime.toDate()
-        return dateToCompare.after(today)
+        DateTime todayUserTimeZone = currentUserTime
+        DateTime today = new DateTime(todayUserTimeZone.year, todayUserTimeZone.monthOfYear,
+                todayUserTimeZone.dayOfMonth, todayUserTimeZone.hourOfDay, todayUserTimeZone.minuteOfHour)
+        DateTime timeToCompare = new DateTime(dateTimeToCompare.year, dateTimeToCompare.monthOfYear,
+                dateTimeToCompare.dayOfMonth, dateTimeToCompare.hourOfDay, dateTimeToCompare.minuteOfHour)
+        return timeToCompare.compareTo(today) > 0
     }
 
     /**

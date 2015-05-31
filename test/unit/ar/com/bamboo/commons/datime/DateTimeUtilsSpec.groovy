@@ -55,7 +55,7 @@ class DateTimeUtilsSpec extends Specification {
         DateTime.now().minusDays(10) || false
         DateTime.now().plusDays(10) || true
         DateTime.now() || false
-        DateTime.now().plusSeconds(200) || true
+        DateTime.now().plusMinutes(10) || true
     }
 
     @Unroll("The date #dateEvaluate isInPeriodWithoutHour(#fromDate, #toDate)? #result")
