@@ -68,11 +68,11 @@ class HourUtilsSpec extends Specification {
 
         where:
         hour || hourMinute
-        100 | new HourUtils.HourMinute(hour: 1, minute: 0)
-        2400 | new HourUtils.HourMinute(hour: 24, minute: 0)
-        130 | new HourUtils.HourMinute(hour: 1, minute: 30)
-        10 | new HourUtils.HourMinute(hour: 0, minute: 10)
-        921 | new HourUtils.HourMinute(hour: 9, minute: 21)
+        100 | new HourMinute(hour: 1, minute: 0)
+        2400 | new HourMinute(hour: 24, minute: 0)
+        130 | new HourMinute(hour: 1, minute: 30)
+        10 | new HourMinute(hour: 0, minute: 10)
+        921 | new HourMinute(hour: 9, minute: 21)
     }
 
     void "test getHourAndMinute method with thrown exception"() {
@@ -95,5 +95,18 @@ class HourUtilsSpec extends Specification {
         hour || hourMinute
         2400 | 2359
         2334 | 2334
+    }
+
+    @Unroll("The hour '#hourMinute' is transform en '#hour'")
+    void "test convertToMilitarHour"() {
+        expect:
+        HourUtils.convertToMilitarHour(hourMinute) == hour
+
+        where:
+        hourMinute || hour
+        new HourMinute(hour: 22, minute: 1) | 2201
+        new HourMinute(hour: 1, minute: 45) | 145
+        new HourMinute(hour: 13, minute: 45) | 1345
+        new HourMinute(hour: 0, minute: 45) | 45
     }
 }
