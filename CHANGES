@@ -1,12 +1,6 @@
 Version 1.1.0:
- - Version bump to 1.1.0
- - Merge pull request #7 from orkonano/developer
- - Version bump to 1.1.0
-
-Version 1.1.0:
  - Merge pull request #7 from orkonano/developer
  - Agrego fecha para transformar las horas y minutos en horario militar
- - Merge branch 'master' into developer
 
 Version 1.0.6:
  - Merge branch 'master' of https://github.com/orkonano/grails-bamboo-commons
