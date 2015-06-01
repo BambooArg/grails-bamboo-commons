@@ -1,3 +1,13 @@
+Version 1.1.1:
+ - Fix bug en isGreaterNow normalizando las fechas en los TZ de Bs As
+ - Arreglo un error que encontré en el método DateTimeUtils.isGreaterNow a partir de un bug en BigHamlet
+ - Cambio la versión al plugin a 1.1.0
+ - Cambio la versión al plugin a 1.1.0
+ - Algunos cambios en el Changes que no estaban bien explicados
+ - Version bump to 1.1.0
+ - Version bump to 1.1.0
+ - Merge pull request #7 from orkonano/developer
+
 Version 1.1.0:
  - Merge pull request #7 from orkonano/developer
  - Agrego fecha para transformar las horas y minutos en horario militar
