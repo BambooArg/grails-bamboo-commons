@@ -1,3 +1,9 @@
+Version 1.1.2:
+ - master: modifico el bumversion.sh para que no realice el tag
+ - Merge pull request #8 from orkonano/developer
+ - developer: cambio la version del plugin a 1.1.2
+ - developer: agrego property size a BambooFile
+
 Version 1.1.1:
  - Fix bug en isGreaterNow normalizando las fechas en los TZ de Bs As
  - Arreglo un error que encontré en el método DateTimeUtils.isGreaterNow a partir de un bug en BigHamlet
