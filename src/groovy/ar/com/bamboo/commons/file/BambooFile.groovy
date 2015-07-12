@@ -11,4 +11,5 @@ class BambooFile {
     String filename
     byte[] filedata
     String contentType
+    int size
 }
