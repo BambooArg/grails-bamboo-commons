@@ -1,3 +1,9 @@
+Version 1.2.0:
+ - Merge branch 'master' of https://github.com/orkonano/grails-bamboo-commons
+ - Merge pull request #9 from orkonano/developer
+ - Agrego configuracion de travis
+ - developer: Se agrega el tag lib de string support para manejar strings desde gsp
+
 Version 1.1.2:
  - master: modifico el bumversion.sh para que no realice el tag
  - Merge pull request #8 from orkonano/developer
