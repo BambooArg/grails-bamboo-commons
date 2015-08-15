@@ -30,6 +30,7 @@ class CuitUtilsSpec extends Specification {
         "20222222223" || true
         "20305940128" || true
         "234234" || false
+        "HOLA" || false
         "" || false
         null || false
         "20555555553" || false
