@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/orkonano/grails-bamboo-commons.svg?branch=master)](https://travis-ci.org/orkonano/grails-bamboo-commons.svg)
-
+[![Project Status](https://stillmaintained.com/orkonano/grails-bamboo-commons.png)](https://stillmaintained.com/orkonano/grails-bamboo-commons)
 grails-bamboo-commons
 =====================
 
