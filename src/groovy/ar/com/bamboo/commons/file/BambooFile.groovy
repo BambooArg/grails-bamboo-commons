@@ -8,6 +8,7 @@ import groovy.transform.CompileStatic
 @CompileStatic
 class BambooFile {
 
+    Long id
     String filename
     byte[] filedata
     String contentType
