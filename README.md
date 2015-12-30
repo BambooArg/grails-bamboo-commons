@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/orkonano/grails-bamboo-commons.svg?branch=master)](https://travis-ci.org/orkonano/grails-bamboo-commons.svg)
-[![Project Status](https://stillmaintained.com/orkonano/grails-bamboo-commons.png)](https://stillmaintained.com/orkonano/grails-bamboo-commons)
+[![Build Status](https://api.travis-ci.org/BambooArg/grails-bamboo-commons.svg?branch=master)](https://api.travis-ci.org/BambooArg/grails-bamboo-commons.svg?branch=master)
+
 grails-bamboo-commons
 =====================
 
@@ -24,7 +24,7 @@ gradle install
 Para publicar un release se debe ejecutar
 
 ```script
-gradle publishMavenPublicationTobambooReleaseRepository
+gradle publishMavenPublicationToBambooReleaseRepository
 
 ```
 
@@ -55,6 +55,6 @@ bambooRepositoryPassword
 
 #Test
 
-El proyecto usa travis-ci como entorno de integración continua. https://travis-ci.org/orkonano/grails-bamboo-commons.
+El proyecto usa travis-ci como entorno de integración continua. https://travis-ci.org/BambooArg/grails-bamboo-commons.
 Se ejecutan tantos los test unitarios como integrales, corriendo la base de datos de test en memoria.
 
