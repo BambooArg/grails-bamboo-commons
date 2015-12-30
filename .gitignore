@@ -29,12 +29,14 @@
 # "temporary" build files
 /target
 /classes
+build/
 
 #IDE
 .project
 .classpath
 .idea/
 *.iml
+.gradle/
 
 #zip
 *.zip.*
