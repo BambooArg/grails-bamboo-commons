@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/orkonano/grails-bamboo-commons.svg?branch=master)](https://travis-ci.org/orkonano/grails-bamboo-commons.svg)
-[![Project Status](https://stillmaintained.com/orkonano/grails-bamboo-commons.png)](https://stillmaintained.com/orkonano/grails-bamboo-commons)
+[![Build Status](https://api.travis-ci.org/BambooArg/grails-bamboo-commons.svg?branch=master)](https://api.travis-ci.org/BambooArg/grails-bamboo-commons.svg?branch=master)
+
 grails-bamboo-commons
 =====================
 
@@ -17,21 +17,21 @@ compile ":grails-bamboo-commons:0.1.0"
 
 Para compilar el proyecto e intalarlo localmente se debe ejecutar
 
- ```grails
-grails maven-install
+ ```script
+gradle install
 ```
 
 Para publicar un release se debe ejecutar
 
-```grails
-grails publish-plugin
+```script
+gradle publishMavenPublicationToBambooReleaseRepository
 
 ```
 
 Para publicar un snapshot se debe ejecutar
 
-```grails
-grails publish-plugin --repository=bambooRepoSnapshot
+```script
+gradle publishMavenPublicationToBambooSNAPSHOTRepository
 
 ```
 
@@ -39,24 +39,22 @@ El repositorio default para la publicación es http://nexus-bambooarg.rhcloud.co
 
 
 ###**Atención**
-Tener en cuenta que se tiene que tener configurado en .grails/setting.groovy
-```groovy
-grails.project.repos.default = "bambooRepo"
-grails.project.repos.bambooRepo.url = "http://nexus-bambooarg.rhcloud.com/nexus/content/repositories/releases/"
-grails.project.repos.bambooRepo.type = "maven"
-grails.project.repos.bambooRepo.username = username (poner el username real)
-grails.project.repos.bambooRepo.password = password (poner el password real)
-
-grails.project.repos.bambooRepoSnapshot.url = "http://nexus-bambooarg.rhcloud.com/nexus/content/repositories/snapshots/"
-grails.project.repos.bambooRepoSnapshot.type = "maven"
-grails.project.repos.bambooRepoSnapshot.username = username
-grails.project.repos.bambooRepoSnapshot.password = password
+Tener en cuenta que se tiene que tener configurado las variables de entorno para poder publicar
+```script
+BAMBOO_REPOSITORY_USERNAME
+BAMBOO_REPOSITORY_PASSWORD
 
 ```
 
+o las propiedades del proyecto
+```script
+bambooRepositoryUsername
+bambooRepositoryPassword
+
+```
 
 #Test
 
-El proyecto usa travis-ci como entorno de integración continua. https://travis-ci.org/orkonano/grails-bamboo-commons.
+El proyecto usa travis-ci como entorno de integración continua. https://travis-ci.org/BambooArg/grails-bamboo-commons.
 Se ejecutan tantos los test unitarios como integrales, corriendo la base de datos de test en memoria.
 
