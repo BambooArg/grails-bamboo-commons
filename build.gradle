@@ -74,7 +74,6 @@ task wrapper(type: Wrapper) {
 
 
 //Publish
-
 def bambooRepositoryUsername = System.getenv('BAMBOO_REPOSITORY_USERNAME') ?: project.hasProperty('bambooRepositoryUsername') ? project.bambooRepositoryUsername : ''
 def bambooRepositoryPassword = System.getenv("BAMBOO_REPOSITORY_PASSWORD") ?: project.hasProperty('bambooRepositoryPassword') ? project.bambooRepositoryPassword : ''
 
@@ -99,15 +98,3 @@ publishing {
         }
     }
 }
-
-/*
-* if(project.version.endsWith('-SNAPSHOT')) {
-                repository(url: "http://nexus.navent.biz:8081/nexus/content/repositories/snapshots/") {
-                    authentication(userName: "deployment", password: "n4v3ntd3v")
-                }
-            }else{
-                repository(url: "http://nexus.navent.biz:8081/nexus/content/repositories/releases/"){
-                    authentication(userName: "deployment", password: "n4v3ntd3v")
-                }
-            }
-* */
