@@ -13,21 +13,19 @@ buildscript {
 
 plugins {
     id "io.spring.dependency-management" version "0.5.4.RELEASE"
-    id "com.jfrog.bintray" version "1.2"
 }
 
-version "2.0.0"
+version "2.0.1-SNAPSHOT"
 group "org.grails.plugins"
 
 apply plugin: 'maven-publish'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: "spring-boot"
-apply plugin: "org.grails.grails-plugin"
 apply plugin: "org.grails.grails-gsp"
-// Used for publishing to central repository, remove if not needed
-apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/grailsCentralPublishing.gradle'
-apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/bintrayPublishing.gradle'
+apply plugin: "org.grails.grails-plugin"
+apply plugin: "org.grails.grails-plugin-publish"
+
 
 ext {
     grailsVersion = project.grailsVersion
@@ -72,8 +70,23 @@ task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
 
+grailsPublish {
+    // TODO: Provide values here
+    user = 'user'
+    key = 'key'
+    githubSlug = 'foo/bar'
+    license {
+        name = 'Apache-2.0'
+    }
+    title = "Bamboo Commons"
+    desc = "Commons to use into Bamboo projects"
+    developers = [orkonano: "Mariano Kfuri", maximicciu: "Maximiliano Micciullo"]
+    portalUser = ""
+    portalPassword = ""
+}
 
 //Publish
+
 def bambooRepositoryUsername = System.getenv('BAMBOO_REPOSITORY_USERNAME') ?: project.hasProperty('bambooRepositoryUsername') ? project.bambooRepositoryUsername : ''
 def bambooRepositoryPassword = System.getenv("BAMBOO_REPOSITORY_PASSWORD") ?: project.hasProperty('bambooRepositoryPassword') ? project.bambooRepositoryPassword : ''
 
