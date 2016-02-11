@@ -1,3 +1,6 @@
+Version 2.0.1:
+ - Migrate to Grails 3.1.1
+
 Version 2.0.0:
  - Migrate to grails 3.x
 
