@@ -1,6 +1,8 @@
 package grails.bamboo.commons
 
-class GrailsBambooCommonsGrailsPlugin {
+import grails.plugins.Plugin
+
+class GrailsBambooCommonsGrailsPlugin extends Plugin{
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "3.x > *"
     // resources that are excluded from plugin packaging
@@ -42,9 +44,9 @@ los proyectos
         // TODO Implement additions to web.xml (optional), this event occurs before
     }
 
-    def doWithSpring = {
-        // TODO Implement runtime spring config (optional)
-    }
+    Closure doWithSpring() {{->
+
+    }}
 
     def doWithDynamicMethods = { ctx ->
         // TODO Implement registering dynamic methods to classes (optional)
