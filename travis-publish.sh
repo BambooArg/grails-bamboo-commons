@@ -10,10 +10,10 @@ echo "Publishing $version version"
 
 EXIT_STATUS=0
 
-if [[ $TRAVIS_REPO_SLUG == "BambooArg/grails-bamboo-common" && $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_TAG == $tagVersion && $EXIT_STATUS -eq 0 ]]; then
+if [[ $TRAVIS_REPO_SLUG == "BambooArg/grails-bamboo-commons" && $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_TAG == $tagVersion && $EXIT_STATUS -eq 0 ]]; then
     ./gradlew publish
 else
-    if [[ $TRAVIS_REPO_SLUG == "BambooArg/grails-bamboo-common" && $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_TAG != $tagVersion && $EXIT_STATUS -eq 0 ]]; then
+    if [[ $TRAVIS_REPO_SLUG == "BambooArg/grails-bamboo-commons" && $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_TAG != $tagVersion && $EXIT_STATUS -eq 0 ]]; then
         echo "Not publish because $tagVersion is different to Travis Tag  $TRAVIS_TAG"
         EXIT_STATUS=1
     else
