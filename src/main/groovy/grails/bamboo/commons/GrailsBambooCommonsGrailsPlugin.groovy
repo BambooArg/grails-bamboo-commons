@@ -1,6 +1,8 @@
 package grails.bamboo.commons
 
-class GrailsBambooCommonsGrailsPlugin {
+import grails.plugins.Plugin
+
+class GrailsBambooCommonsGrailsPlugin extends Plugin{
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "3.x > *"
     // resources that are excluded from plugin packaging
@@ -18,7 +20,7 @@ los proyectos
 '''
 
     // URL to the plugin's documentation
-    def documentation = "https://github.com/orkonano/grails-bamboo-commons"
+    def documentation = "https://github.com/BambooArg/grails-bamboo-common"
 
     // Extra (optional) plugin metadata
 
@@ -33,18 +35,18 @@ los proyectos
                        [ name: "Maximialiano Micciullo", email: "mmicciullo@gmail.com" ]]
 
     // Location of the plugin's issue tracker.
-    def issueManagement = [ system: "Github", url: "https://github.com/orkonano/grails-bamboo-commons/issues" ]
+    def issueManagement = [ system: "Github", url: "https://github.com/BambooArg/grails-bamboo-commons/issues" ]
 
     // Online location of the plugin's browseable source code.
-    def scm = [ url: "https://github.com/orkonano/grails-bamboo-commons" ]
+    def scm = [ url: "https://github.com/BambooArg/grails-bamboo-commons" ]
 
     def doWithWebDescriptor = { xml ->
         // TODO Implement additions to web.xml (optional), this event occurs before
     }
 
-    def doWithSpring = {
-        // TODO Implement runtime spring config (optional)
-    }
+    Closure doWithSpring() {{->
+
+    }}
 
     def doWithDynamicMethods = { ctx ->
         // TODO Implement registering dynamic methods to classes (optional)
